@@ -1,21 +1,12 @@
 # Skills
 
-我的 WorkBuddy / CodeBuddy 自定义 skills 合集。
+个人自用的 Agent skills 合集，遵循通用的 `SKILL.md` 约定（YAML frontmatter + `references/` + `scripts/` 分层），任何支持该约定的 Agent 都能直接加载，不绑定具体客户端。
 
 ## 目录
 
 | Skill | 说明 |
 |---|---|
 | [`electronic-circuit-lab-report`](electronic-circuit-lab-report/SKILL.md) | 生成、排版与修订中文《电子线路综合设计实践》等电子线路/模拟电路实验报告（.docx），并导出 PDF。固定版式：字体字号、1.5 倍行距、首行缩进、图号与图题、三线表、Word 原生公式、封面与页码 |
-
-## 安装
-
-```bash
-git clone https://github.com/2512789022-spec/skills.git
-cp -r skills/electronic-circuit-lab-report ~/.workbuddy/skills/
-```
-
-装好后在对话里提到「实验报告」「实验报告排版」「统一实验报告格式」即可触发。
 
 ## 目录约定
 
@@ -31,6 +22,17 @@ skills/
         ├── inspect_reference.py  # 提取任意 docx 的版式指纹
         └── verify_report.py      # 成品格式自检（字号/缩进/行距/图号/三线表/公式）
 ```
+
+## 安装
+
+```bash
+git clone https://github.com/2512789022-spec/skills.git
+
+# 把 skill 目录放进你所使用 Agent 的 skills 目录即可
+cp -r skills/electronic-circuit-lab-report "<你的 skills 目录>/"
+```
+
+触发靠 `SKILL.md` 的 `description` 字段：对话里提到「实验报告」「实验报告排版」「统一实验报告格式」时，Agent 会自动加载。
 
 ## 依赖
 
